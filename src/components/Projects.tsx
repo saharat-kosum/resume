@@ -9,12 +9,15 @@ function Projects() {
   const refContext = useContext(RefContext);
   const { projectRef } = refContext || {};
   return (
-    <div ref={projectRef} className="m-1 hero">
+    <div ref={projectRef} className="p-1 hero">
       <div className="hero-content text-center">
         <div className="">
           <h1 className="text-xl font-semibold">Projects</h1>
-          {projects.map(() => (
-            <div className="card lg:card-side bg-base-100 shadow-xl">
+          {projects.map((project, index) => (
+            <div
+              className="card lg:card-side bg-base-100 shadow-xl"
+              key={index}
+            >
               <figure>
                 <img
                   src="https://img.daisyui.com/images/stock/photo-1494232410401-ad00d5433cfa.jpg"
