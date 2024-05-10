@@ -1,7 +1,10 @@
-import { useRef, useState } from "react";
+import { useContext, useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
+import { RefContext } from "../context/refContext";
 
 function Contact() {
+  const refContext = useContext(RefContext);
+  const { contactRef } = refContext || {};
   const form = useRef(null);
   const [formData, setFormData] = useState({
     name: "",
@@ -49,8 +52,8 @@ function Contact() {
     }
   };
   return (
-    <div className="hero min-h-screen bg-base-200">
-      <div className="hero-content flex-col lg:flex-row-reverse">
+    <div className="hero py-20 bg-base-200" ref={contactRef}>
+      <div className="hero-content flex-col lg:flex-row-reverse max-w-5xl">
         <div className="text-center lg:text-left">
           <h1 className="text-5xl font-bold">Contact Me!</h1>
           <p className="py-6">
