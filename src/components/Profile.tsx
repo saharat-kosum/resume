@@ -1,3 +1,5 @@
+import profile from "../assets/profile.jpg";
+
 const stacks = [
   "https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/typescript-colored.svg",
   "https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/react-colored.svg",
@@ -9,10 +11,10 @@ const stacks = [
 function Profile() {
   return (
     <div className="hero min-h-screen py-16">
-      <div className="hero-content flex-col lg:flex-row-reverse gap-8 lg:gap-28">
+      <div className="hero-content flex-col lg:flex-row-reverse gap-8 lg:gap-12">
         <img
-          src="https://img.daisyui.com/images/stock/photo-1635805737707-575885ab0820.jpg"
-          className="max-w-sm rounded-lg shadow-2xl"
+          src={profile}
+          className="rounded-lg shadow-2xl mask mask-squircle max-w-64"
         />
         <div>
           <h1 className="lg:text-5xl font-bold text-4xl">Saharat Kosum</h1>
