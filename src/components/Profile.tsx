@@ -15,8 +15,13 @@ function Profile() {
           className="max-w-sm rounded-lg shadow-2xl"
         />
         <div>
-          <h1 className="text-5xl font-bold">Box Office News!</h1>
-          <p className="py-6 text-gray-500">Description</p>
+          <h1 className="lg:text-5xl font-bold text-4xl">Saharat Kosum</h1>
+          <h1 className="text-xl font-bold">Front-End Developer</h1>
+          <p className="py-6 text-gray-500 max-w-lg">
+            Hi, I'm Saharat Kosum, but you can call me Phai. I'm a passionate
+            front-end developer based in Bangkok, Thailand, eager to expand my
+            skills to become a full-stack developer.
+          </p>
           <div className="flex gap-3 items-center flex-col lg:flex-row">
             <p className="font-semibold">Tech Stack</p>
             <p className="hidden lg:block">|</p>

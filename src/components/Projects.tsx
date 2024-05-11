@@ -35,14 +35,14 @@ function Projects() {
   const refContext = useContext(RefContext);
   const { projectRef } = refContext || {};
   return (
-    <div ref={projectRef} className="px-1 py-20 hero">
+    <div ref={projectRef} className="py-20 hero">
       <div className="hero-content">
         <div className="">
           <h1 className="text-3xl font-semibold mb-4">Projects</h1>
           <div className="flex flex-col gap-5">
             {projects.map((project, index) => (
               <div
-                className="card lg:card-side bg-base-100 shadow-xl"
+                className="card lg:card-side bg-base-100 shadow-xl lg:max-w-fit max-w-sm"
                 key={index}
               >
                 <figure className="max-w-sm max-h-sm">
