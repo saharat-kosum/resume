@@ -1,15 +1,22 @@
 import { useContext, useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
 import { RefContext } from "../context/refContext";
+import Swal from "sweetalert2";
+import Spinner from "./Spinner";
+
+const defaultForm = {
+  name: "",
+  email: "",
+  message: "",
+};
 
 function Contact() {
   const refContext = useContext(RefContext);
   const { contactRef } = refContext || {};
   const form = useRef(null);
+  const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    message: "",
+    ...defaultForm,
   });
 
   const handleChange = (
@@ -32,6 +39,7 @@ function Contact() {
       import.meta.env.VITE_SERVICE_ID &&
       import.meta.env.VITE_TEMPLATE_ID
     ) {
+      setLoading(true);
       emailjs
         .sendForm(
           import.meta.env.VITE_SERVICE_ID,
@@ -44,11 +52,23 @@ function Contact() {
         .then(
           () => {
             console.log("SUCCESS!");
+            setFormData({ ...defaultForm });
+            Swal.fire({
+              title: "Success!",
+              text: "Email have been sent!",
+              icon: "success",
+            });
           },
           (error: any) => {
             console.log("FAILED...", error.text);
+            Swal.fire({
+              title: "Failed!",
+              text: "Sent E-mail Failed!",
+              icon: "error",
+            });
           }
-        );
+        )
+        .finally(() => setLoading(false));
     }
   };
   return (
@@ -79,6 +99,7 @@ function Contact() {
                 className="input input-bordered"
                 required
                 name="name"
+                value={formData.name}
                 onChange={(e) => handleChange(e)}
               />
             </div>
@@ -92,6 +113,7 @@ function Contact() {
                 className="input input-bordered"
                 required
                 name="email"
+                value={formData.email}
                 onChange={(e) => handleChange(e)}
               />
             </div>
@@ -104,12 +126,17 @@ function Contact() {
                 placeholder="Message"
                 required
                 name="message"
+                value={formData.message}
                 onChange={(e) => handleChange(e)}
               ></textarea>
             </label>
             <div className="form-control mt-6">
-              <button className="btn btn-accent" type="submit">
-                Submit
+              <button
+                className="btn btn-accent"
+                type="submit"
+                disabled={loading}
+              >
+                {loading ? <Spinner /> : "Submit"}
               </button>
             </div>
           </form>

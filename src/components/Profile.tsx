@@ -28,8 +28,8 @@ function Profile() {
             <p className="font-semibold">Tech Stack</p>
             <p className="hidden lg:block">|</p>
             <div className="flex gap-2">
-              {stacks.map((stack) => (
-                <img src={stack} alt="stack" className="w-8 h-8" />
+              {stacks.map((stack, index) => (
+                <img src={stack} alt="stack" className="w-8 h-8" key={index} />
               ))}
             </div>
           </div>
