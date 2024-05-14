@@ -14,6 +14,7 @@ function Profile() {
       <div className="hero-content flex-col lg:flex-row-reverse gap-8 lg:gap-12">
         <img
           src={profile}
+          alt="profile"
           className="rounded-lg shadow-2xl mask mask-squircle max-w-64"
         />
         <div>
